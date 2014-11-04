@@ -1,7 +1,20 @@
 package com.rea.model;
 
 /**
- * Created by akumadevil on 4/11/2014.
+ * Robot POJO.
+ *
+ * States:
+ *   placed     boolean     Has the robot been placed on the board?
+ *   x          int         X-position on the board
+ *   y          int         Y-position on the board
+ *   facing     Direction   Enum representing direction of the robot
+ *
+ * Behaviours:
+ *   place(x, y, facing)
+ *   move
+ *   left
+ *   right
+ *   report
  */
 public class Robot {
     private boolean placed;
@@ -44,8 +57,10 @@ public class Robot {
         }
     }
 
+    /**
+     * Depending on the robot's direction, move it forward/back across the table X or Y plane.
+     */
     private void moveForward() {
-        // Lambda?
         switch (facing) {
             case NORTH:
                 if (isValidPlacement(y + 1)) {
@@ -70,6 +85,12 @@ public class Robot {
         }
     }
 
+    /**
+     * Checks if position is on the table.
+     *
+     * @param pos   Proposed position
+     * @return      TRUE if position is on the table
+     */
     private static boolean isValidPlacement(int pos) {
         if (pos >= 0 && pos < Table.LENGTH) {
             return true;

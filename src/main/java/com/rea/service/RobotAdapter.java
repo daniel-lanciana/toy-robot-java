@@ -3,10 +3,8 @@ package com.rea.service;
 import com.rea.model.Direction;
 import com.rea.model.Robot;
 
-import java.util.Vector;
-
 /**
- * Created by akumadevil on 4/11/2014.
+ * Adapter between raw input and Robot object.
  */
 public class RobotAdapter {
     private static String ERROR_MSG_INVALID_INPUT = "Invalid input";
@@ -21,6 +19,12 @@ public class RobotAdapter {
         this.robot = robot;
     }
 
+    /**
+     * Calls the appropriate Robot method depending on input.
+     *
+     * @param input     Raw command
+     * @return          Report text, invalid input error message or empty string
+     */
     public String input(String input) {
         if (input != null) {
             input = input.trim().toLowerCase();
@@ -50,6 +54,11 @@ public class RobotAdapter {
         return "";
     }
 
+    /**
+     * Parses the input and calls the PLACE command.
+     *
+     * @param input     Raw input
+     */
     private void callPlaceCommand(String input) {
         String[] args = input.replaceAll("place ", "").split(",");
 
@@ -60,6 +69,12 @@ public class RobotAdapter {
         robot.place(x, y, facing);
     }
 
+    /**
+     * Matches the PLACE command input against a regular expression.
+     *
+     * @param input     Place command input
+     * @return          TRUE if a valid-formatted command
+     */
     private boolean isValidPlaceCommand(String input) {
         return input.matches("^place [0-9]+,[0-9]+,(north|south|east|west)");
     }

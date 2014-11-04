@@ -1,0 +1,16 @@
+== Brief
+
+Partial Java port of project located at: https://github.com/daniel-lanciana/robot-demo
+
+== Comments
+
+* Command-line not web application
+* Framework created with Spring Boot (trying it out) using Java 8
+* BDD/TDD with JUnit4 and Mockito (decided against GroovyTests due to lack of IDE support). No DSL (spec) notation or Hamcrest matchers.
+* Enums instead of Array object patching
+* No error message informing user to PLACE before executing commands (not part of brief anyway)
+
+== Improvements (Minor)
+
+* Global properties file
+* Lambda for moveForward() method?
